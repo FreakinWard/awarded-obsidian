@@ -10,7 +10,7 @@ class AwardedTemplates {
 
     let title = tp.file.title;
 
-    console.log(`awardedTemplates: ${title}`);
+    console.log("helloWorld", `awardedTemplates: ${title}`);
   }
 
   async adjustNote(tp, noteType) {
@@ -52,7 +52,8 @@ class AwardedTemplates {
     const newNoteTitle = "Untitled";
 
     const title = tp.file.title;
-    const file = tp.file.find_tfile(tp.file.path(true));
+    // const file = tp.file.find_tfile(tp.file.path(true));
+    console.log("promptForTopic", { title });
 
     if (title.startsWith(newNoteTitle)) {
       const promptMessage = this.getNoteTypePrompt(noteType);
@@ -61,7 +62,10 @@ class AwardedTemplates {
 
       if (topic) return topic;
 
-      console.log(`Topic skipped, will delete ${tp.file.path(true)}`, {});
+      console.log(
+        "promptForTopic",
+        `Topic skipped, will delete ${tp.file.path(true)}`,
+      );
       // await this.deleteThisFile(tp);
 
       return null;
@@ -76,7 +80,7 @@ class AwardedTemplates {
         return "/Timestamps/Meetings/";
       case "person":
         return "/Extras/People/";
-      case "1-on-1":
+      case "person-note":
         return "/Timestamps/People/";
       case "standup":
         return "/Timestamps/Meetings/";
@@ -101,12 +105,12 @@ class AwardedTemplates {
     if (existingFile) {
       const message = `File already exists, named correctly and located at:\n ${targetFilePath}`;
 
-      console.log(message);
+      console.log("renameFileAppendDate", message);
 
       return; // Skip the move
     }
 
-    console.log(`Note moved to:\n ${targetFilePath}`);
+    console.log("renameFileAppendDate", `Note moved to:\n ${targetFilePath}`);
     await tp.file.move(targetFilePath);
     // await tp.file.rename(targetFilePath);
   }
@@ -117,7 +121,10 @@ class AwardedTemplates {
     const fileToDelete = tp.app.vault.getAbstractFileByPath(filePath);
 
     if (fileToDelete) {
-      console.log(`Existing file at ${targetFilePath} has been deleted.`);
+      console.log(
+        "deleteThisFile",
+        `Existing file at ${targetFilePath} has been deleted.`,
+      );
       // TODO: figure out why this throws an error in the console
       // when calling this.app then the file is deleted but an error is thrown
       // when calling tp.app then the file is NOT deleted and no error is thrown
@@ -133,11 +140,10 @@ class AwardedTemplates {
       case "meeting":
         return "Meeting Topic:";
       case "person":
-        return "Persons Name:";
-      case "1-on-1":
+      case "person-note":
         return "Persons Name:";
       default:
-        return null;
+        return "Generic Topic:";
     }
   }
 }
