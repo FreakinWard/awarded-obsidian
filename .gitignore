@@ -1,7 +1,8 @@
-.idea/
-.obsidian/
-/Extras/Files/
-/Extras/People/
-/Inbox/
-/Spaces/
-/Timestamps/
+.idea
+.obsidian
+Extras/Files
+Extras/People
+Inbox
+node_modules
+Spaces
+Timestamps

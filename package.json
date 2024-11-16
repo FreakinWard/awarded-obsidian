@@ -1,0 +1,26 @@
+{
+  "name": "obisidian-awarded-templates",
+  "version": "0.1.0",
+  "description": "Get started using Obisidian with opinionated templates",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FreakinWard/awarded-obsidian.git"
+  },
+  "keywords": [
+    "obsidian",
+    "templates"
+  ],
+  "author": "FreakinWard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FreakinWard/awarded-obsidian/issues"
+  },
+  "homepage": "https://github.com/FreakinWard/awarded-obsidian#readme",
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
