@@ -13,30 +13,14 @@ class AwardedTemplates {
     console.log(`awardedTemplates: ${title}`);
   }
 
-  getNoteTypeDirectory(noteType) {
-    switch (noteType) {
-      case "meeting":
-        return "/Timestamps/Meetings/";
-      case "person":
-        return "/Extras/People/";
-      case "1-on-1":
-        return "/Timestamps/People/";
-      case "standup":
-        return "/Timestamps/Meetings/";
-      default:
-        return "/Inbox/";
-    }
-  }
-
   async adjustNote(tp, noteType) {
     const { obsidian, app } = this.obsidianState();
-    
+
     // for new files, create a title
     // for existing files, use existing title
     const createdTitle = await this.createNoteTitle(tp, noteType);
 
-    console.log('test', { createdTitle })
-    
+    console.log("test", { createdTitle });
 
     const directory = this.getNoteTypeDirectory(noteType);
 
@@ -53,11 +37,11 @@ class AwardedTemplates {
     // When TimeStamped -> {YYYY-MM-DD} {topic}
     const today = tp.date.now("YYYY-MM-DD");
 
-    if (noteType === "standup") return `${today} ${noteType}`;;
+    if (noteType === "standup") return `${today} ${noteType}`;
 
     const topic = await this.promptForTopic(tp, noteType);
 
-    if (noteType === 'person') return topic;
+    if (noteType === "person") return topic;
 
     return `${today} ${topic}`;
   }
@@ -84,6 +68,21 @@ class AwardedTemplates {
     }
 
     return title;
+  }
+
+  getNoteTypeDirectory(noteType) {
+    switch (noteType) {
+      case "meeting":
+        return "/Timestamps/Meetings/";
+      case "person":
+        return "/Extras/People/";
+      case "1-on-1":
+        return "/Timestamps/People/";
+      case "standup":
+        return "/Timestamps/Meetings/";
+      default:
+        return "/Inbox/";
+    }
   }
 
   async renameFileAppendDate(tp, title, directory) {
@@ -141,5 +140,4 @@ class AwardedTemplates {
         return null;
     }
   }
-
 }
