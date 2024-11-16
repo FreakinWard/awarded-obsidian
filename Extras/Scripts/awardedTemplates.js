@@ -13,13 +13,86 @@ class AwardedTemplates {
     console.log(`awardedTemplates: ${title}`);
   }
 
+  getNoteTypeDirectory(noteType) {
+    switch (noteType) {
+      case "meeting":
+        return "/Timestamps/Meetings/";
+      case "person":
+        return "/Extras/People/";
+      case "1-on-1":
+        return "/Timestamps/People/";
+      case "standup":
+        return "/Timestamps/Meetings/";
+      default:
+        return "/Inbox/";
+    }
+  }
+
+  async adjustNote(tp, noteType) {
+    const { obsidian, app } = this.obsidianState();
+    
+    // for new files, create a title
+    // for existing files, use existing title
+    const createdTitle = await this.createNoteTitle(tp, noteType);
+
+    console.log('test', { createdTitle })
+    
+
+    const directory = this.getNoteTypeDirectory(noteType);
+
+    await this.renameFileAppendDate(tp, createdTitle, directory);
+
+    await tp.file.cursor(0);
+
+    return createdTitle;
+  }
+
+  async createNoteTitle(tp, noteType) {
+    // When Standup -> {YYYY-MM-DD} standup
+    // When Person -> {topic}
+    // When TimeStamped -> {YYYY-MM-DD} {topic}
+    const today = tp.date.now("YYYY-MM-DD");
+
+    if (noteType === "standup") return `${today} ${noteType}`;;
+
+    const topic = await this.promptForTopic(tp, noteType);
+
+    if (noteType === 'person') return topic;
+
+    return `${today} ${topic}`;
+  }
+
+  async promptForTopic(tp, noteType) {
+    const { obsidian, app } = this.obsidianState();
+
+    const newNoteTitle = "Untitled";
+
+    const title = tp.file.title;
+    const file = tp.file.find_tfile(tp.file.path(true));
+
+    if (title.startsWith(newNoteTitle)) {
+      const promptMessage = this.getNoteTypePrompt(noteType);
+
+      const topic = await tp.system.prompt(promptMessage);
+
+      if (topic) return topic;
+
+      console.log(`Topic skipped, will delete ${tp.file.path(true)}`, {});
+      // await this.deleteThisFile(tp);
+
+      return null;
+    }
+
+    return title;
+  }
+
   async renameFileAppendDate(tp, title, directory) {
     // const title = tp.file.title;
     const file = tp.file.find_tfile(tp.file.path(true));
 
     const isFileAlreadyPrefixed = title.match(/^\d{4}-\d{2}-\d{2}/);
     const today = tp.date.now("YYYY-MM-DD");
-    const newTitle = `${today} ${title}`;
+    const newTitle = title.replace(/^\d{4}-\d{2}-\d{2} /, `${today} `);
 
     const finalTitle = isFileAlreadyPrefixed ? title : newTitle;
 
@@ -56,68 +129,6 @@ class AwardedTemplates {
     }
   }
 
-  async promptForTopic(tp, noteType) {
-    const { obsidian, app } = this.obsidianState();
-
-    const defaultTitle = "Untitled";
-
-    const title = tp.file.title;
-    const file = tp.file.find_tfile(tp.file.path(true));
-
-    if (title.startsWith(defaultTitle)) {
-      const promptMessage = this.getNoteTypePrompt(noteType);
-
-      const topic = await tp.system.prompt(promptMessage);
-
-      if (topic) return topic;
-
-      console.log(`Topic skipped, will delete ${tp.file.path(true)}`, {});
-      // await this.deleteThisFile(tp);
-
-      return null;
-    }
-
-    return title;
-  }
-
-  async simplePromptForTopic(tp, noteType) {
-    // const directory = "/Timestamps/Meetings/";
-    const directory = this.getNoteTypeDirectory(noteType);
-    const defaultTitle = "Untitled";
-
-    let title = tp.file.title;
-
-    // when the file name is undefined, prompt for the topic
-    if (title.startsWith(defaultTitle)) {
-      const topic = await tp.system.prompt("Meeting Topic:");
-
-      // when the prompt is empty or skipped then delete the newly created file
-      if(!topic) {
-        await this.app.vault.delete(defaultTitle);
-        return;
-      }
-
-      title = topic;
-    }
-
-    return title;
-  }
-
-  getNoteTypeDirectory(noteType) {
-    switch (noteType) {
-      case "meeting":
-        return "/Timestamps/Meetings/";
-      case "person":
-        return "/Extras/People/";
-      case "1-on-1":
-        return "/Timestamps/People/";
-      case "standup":
-        return "/Timestamps/Meetings/";
-      default:
-        return "/Inbox/";
-    }
-  }
-
   getNoteTypePrompt(noteType) {
     switch (noteType) {
       case "meeting":
@@ -131,20 +142,4 @@ class AwardedTemplates {
     }
   }
 
-  async adjustNote(tp, noteType) {
-    const { obsidian, app } = this.obsidianState();
-
-    const skipPromptsForTypes = ["standup"];
-    const skipPrompt = skipPromptsForTypes.includes(noteType);
-
-    const title = await this.simplePromptForTopic(tp, noteType);
-
-    const directory = this.getNoteTypeDirectory(noteType);
-
-    await this.renameFileAppendDate(tp, title, directory);
-
-    await tp.file.cursor(0);
-
-    return title;
-  }
 }

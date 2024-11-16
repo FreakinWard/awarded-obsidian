@@ -1,6 +1,6 @@
 ---
 type: <% "meeting" %>
-date: <% tp.file.creation_date('YYYY-MM-DDTHH:mm') %>
+date: <% tp.file.creation_date("YYYY-MM-DDTHH:mm:ss") %>
 company: Conductiv
 emotion:
 ---

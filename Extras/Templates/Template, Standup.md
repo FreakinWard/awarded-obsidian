@@ -1,6 +1,6 @@
 ---
-type: template-meeting
-date: <% tp.file.creation_date('YYYY-MM-DDTHH:mm') %>
+type: <% "standup" %>
+date: <% tp.file.creation_date("YYYY-MM-DDTHH:mm:ss") %>
 company: Conductiv
 summary: 
 emotion:

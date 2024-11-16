@@ -1,8 +1,8 @@
 ---
-type: template-person-note
+type: <% "person-note" %>
 aliases: 
-date: <% tp.file.creation_date() %>
-summary: 
+date: <% tp.file.creation_date("YYYY-MM-DDTHH:mm:ss") %>
+summary:
 ---
 <%*
 	const directory = "/Timestamps/People/";
