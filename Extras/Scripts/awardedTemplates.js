@@ -18,17 +18,17 @@ class AwardedTemplates {
 
     // for new files, create a title
     // for existing files, use existing title
-    const createdTitle = await this.createNoteTitle(tp, noteType);
+    const title = await this.createNoteTitle(tp, noteType);
 
-    console.log("test", { createdTitle });
+    this.logMessage("adjustNote", { title });
 
     const directory = this.getNoteTypeDirectory(noteType);
 
-    await this.renameFileAppendDate(tp, createdTitle, directory);
+    await this.renameFileAppendDate(tp, title, directory);
 
     await tp.file.cursor(0);
 
-    return createdTitle;
+    return title;
   }
 
   async createNoteTitle(tp, noteType) {
@@ -52,8 +52,8 @@ class AwardedTemplates {
     const newNoteTitle = "Untitled";
 
     const title = tp.file.title;
-    // const file = tp.file.find_tfile(tp.file.path(true));
-    console.log("promptForTopic", { title });
+
+    this.logMessage("promptForTopic", { title });
 
     if (title.startsWith(newNoteTitle)) {
       const promptMessage = this.getNoteTypePrompt(noteType);
@@ -105,12 +105,15 @@ class AwardedTemplates {
     if (existingFile) {
       const message = `File already exists, named correctly and located at:\n ${targetFilePath}`;
 
-      console.log("renameFileAppendDate", message);
+      this.logMessage("renameFileAppendDate", message);
 
       return; // Skip the move
     }
 
-    console.log("renameFileAppendDate", `Note moved to:\n ${targetFilePath}`);
+    this.logMessage(
+      "renameFileAppendDate",
+      `Note moved to:\n ${targetFilePath}`,
+    );
     await tp.file.move(targetFilePath);
     // await tp.file.rename(targetFilePath);
   }
@@ -121,9 +124,9 @@ class AwardedTemplates {
     const fileToDelete = tp.app.vault.getAbstractFileByPath(filePath);
 
     if (fileToDelete) {
-      console.log(
+      this.logMessage(
         "deleteThisFile",
-        `Existing file at ${targetFilePath} has been deleted.`,
+        `Existing file at ${filePath} has been deleted.`,
       );
       // TODO: figure out why this throws an error in the console
       // when calling this.app then the file is deleted but an error is thrown
@@ -145,5 +148,12 @@ class AwardedTemplates {
       default:
         return "Generic Topic:";
     }
+  }
+
+  logMessage(topic, message, ...rest) {
+    const { obsidian, app } = this.obsidianState();
+
+    // TODO: toggle on/off for debugging purposes
+    console.log(topic, message, ...rest);
   }
 }
