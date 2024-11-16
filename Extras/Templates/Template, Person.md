@@ -1,7 +1,7 @@
 ---
-type: template-person
+type: <% "person" %>
 aliases: 
-date: <% tp.file.creation_date() %>
+date: <% tp.file.creation_date("YYYY-MM-DDTHH:mm:ss") %>
 birthday: 
 personality: 
 relationship:
@@ -12,18 +12,7 @@ role:
 pets: 
 family:
 ---
-<%*
-	const directory = "/Extras/People/";
-	const defaultTitle = "Untitled";
-	
-	let title = tp.file.title;
-		console.log(`running script: ${title}`)
-
-	
-%>
-
-<% customJS.AwardedTemplates.createNoteFromTemplate(tp) %>
-
+<%* const title = customJS.AwardedTemplates.adjustNote(tp, "person") %>
 # <% title %>
 
 ## Overview
