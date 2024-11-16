@@ -5,8 +5,8 @@ date: <% tp.file.creation_date("YYYY-MM-DDTHH:mm:ss") %>
 summary:
 emotion:
 ---
-<%* const {title, topic } = customJS.AwardedTemplates.adjustNote(tp, "person-note") %>
-Person:: [[<% topic ? topic : "Undefined Topic" %>]]
+<%* const title = customJS.AwardedTemplates.adjustNote(tp, "person-note") %>
+
 Person:: [[<% title %>]]
 Date: <% tp.date.now("YYYY-MM-DD - dddd") %>
 
