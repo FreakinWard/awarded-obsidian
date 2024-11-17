@@ -117,14 +117,15 @@ class AwardedTemplates {
     const isFileAlreadyPrefixed = newNoteTitle.match(/^\d{4}-\d{2}-\d{2}/);
     const finalTitle = isFileAlreadyPrefixed ? newNoteTitle : newTitle;
 
-    const targetFilePath = `${directory}${finalTitle}`;
+    const targetFilePath = `${directory}${finalTitle}.md`;
 
     const existingFile = await tp.file.find_tfile(targetFilePath);
     if (existingFile) {
-      await this.deleteThisFile(tp);
+      await app.workspace.getLeaf("tab").openFile(existingFile);
+
       this.logMessage(`Note already exists:\n ${targetFilePath}`);
 
-      return; // Skip the move
+      throw new Error("Note already exists");
     }
 
     await tp.file.move(targetFilePath);
