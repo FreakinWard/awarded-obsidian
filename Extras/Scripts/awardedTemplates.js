@@ -58,11 +58,35 @@ class AwardedTemplates {
     if (title.startsWith(newNoteTitle)) {
       const promptMessage = this.getNoteTypePrompt(noteType);
 
-      const topic = await tp.system.prompt(promptMessage);
+      // const topic = await tp.system.prompt(promptMessage);
+      // const topic = tp.system.suggester(
+      //   ["Happy", "Sad", "Confused"],
+      //   ["Happy", "Sad", "Confused"],
+      // );
+      const personFiles = await app.vault.getMarkdownFiles().filter((file) => {
+        const frontmatter = app.metadataCache.getFileCache(file)?.frontmatter;
+        return frontmatter && frontmatter.type === "person";
+      });
+
+      const personNames = personFiles.map((file) => file.basename);
+      this.logMessage("promptForTopic", { personNames });
+      // const topic = await tp.system.suggester(personNames, personNames);
+
+      const throwOnCancel = false;
+      const limit = 10;
+      const topic = await tp.system.suggester(
+        personNames,
+        personNames,
+        throwOnCancel,
+        promptMessage,
+        limit,
+      );
+
+      this.logMessage("promptForTopic", { topic });
 
       if (topic) return topic;
 
-      console.log(
+      this.logMessage(
         "promptForTopic",
         `Topic skipped, will delete ${tp.file.path(true)}`,
       );
@@ -90,8 +114,10 @@ class AwardedTemplates {
   }
 
   async renameFileAppendDate(tp, title, directory) {
+    const { obsidian, app } = this.obsidianState();
+
     // const title = tp.file.title;
-    const file = tp.file.find_tfile(tp.file.path(true));
+    // const file = tp.file.find_tfile(tp.file.path(true));
 
     const isFileAlreadyPrefixed = title.match(/^\d{4}-\d{2}-\d{2}/);
     const today = tp.date.now("YYYY-MM-DD");
@@ -102,11 +128,19 @@ class AwardedTemplates {
     const targetFilePath = `${directory}${finalTitle}`;
 
     const existingFile = await tp.file.find_tfile(targetFilePath);
+    // const fileExists = await tp.file.exists(fullPath);
     if (existingFile) {
-      const message = `File already exists, named correctly and located at:\n ${targetFilePath}`;
+      // await this.deleteThisFile(tp);
 
-      this.logMessage("renameFileAppendDate", message);
+      // const pathTFile = app.vault.getAbstractFileByPath(targetFilePath);
+      // app.workspace.getLeaf("tab").openFile(pathTFile);
 
+      this.logMessage(
+        "renameFileAppendDate",
+        `Note already exists:\n ${targetFilePath}`,
+      );
+
+      // throw new Error();
       return; // Skip the move
     }
 
@@ -124,15 +158,24 @@ class AwardedTemplates {
     const fileToDelete = tp.app.vault.getAbstractFileByPath(filePath);
 
     if (fileToDelete) {
-      this.logMessage(
-        "deleteThisFile",
-        `Existing file at ${filePath} has been deleted.`,
-      );
       // TODO: figure out why this throws an error in the console
       // when calling this.app then the file is deleted but an error is thrown
       // when calling tp.app then the file is NOT deleted and no error is thrown
-      await this.app.vault.delete(fileToDelete);
+      // await this.app.vault.delete(fileToDelete);
       // await tp.app.vault.delete(fileToDelete);
+
+      try {
+        await app.vault.trash(fileToDelete, true);
+        this.logMessage(
+          "deleteThisFile",
+          `Deleted existing file at:\n ${filePath}`,
+        );
+      } catch (e) {
+        this.errorMessage(
+          "deleteThisFile",
+          `Failed to delete existing file at:\n ${filePath}`,
+        );
+      }
     } else {
       console.error(`File to delete not found: ${filePath}`);
     }
@@ -151,6 +194,13 @@ class AwardedTemplates {
   }
 
   logMessage(topic, message, ...rest) {
+    const { obsidian, app } = this.obsidianState();
+
+    // TODO: toggle on/off for debugging purposes
+    console.log(topic, message, ...rest);
+  }
+
+  errorMessage(topic, message, ...rest) {
     const { obsidian, app } = this.obsidianState();
 
     // TODO: toggle on/off for debugging purposes
