@@ -41,6 +41,9 @@ class AwardedTemplates {
 
     const topic = await this.promptForTopic(tp, noteType);
 
+    // cancel note creation when topic is not provided
+    if (!topic) throw new Error("Topic not provided.");
+
     if (noteType === "person") return topic;
 
     return `${today} ${topic}`;
@@ -84,15 +87,7 @@ class AwardedTemplates {
 
       this.logMessage("promptForTopic", { topic });
 
-      if (topic) return topic;
-
-      this.logMessage(
-        "promptForTopic",
-        `Topic skipped, will delete ${tp.file.path(true)}`,
-      );
-      // await this.deleteThisFile(tp);
-
-      return null;
+      return topic;
     }
 
     return title;
