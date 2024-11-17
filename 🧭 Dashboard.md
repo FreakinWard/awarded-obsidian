@@ -5,44 +5,36 @@ type: moc
 
 ![Today](https://wakapi.dev/api/badge/freakinward/interval:today?label=today)
 
-
-```dataview
-TASK
-FROM ""
-WHERE type = "meeting"
-	AND!completed
-GROUP BY link as origin
-SORT origin.file.mtime DESC, text ASC
-```
-
 ```dataviewjs
-const currentHour = moment().format('HH');
-
-let greeting;
-
-if (currentHour >= 18 || currentHour < 5) greeting = '🌙 Good Evening'
-else if (currentHour >= 5 && currentHour < 12) greeting = '🌞 Good Morning'
-else greeting = '🌞 Good Afternoon'
-
-dv.header(2, greeting)
+customJS.AwardedUtility.greeting(dv)
 ```
 
-## Yesterdays notes
-## This week's notes
+## Task from direct query
 
-## Last weeks notes
 
-## Action Items 
+--- 
+
+## Inbox
+```dataviewjs
+customJS.AwardedTables.todaysInbox(dv);
+// dv.list(dv.pages('"Inbox"').file.name)
+```
+
+## Action Items - Task from query
+```tasks
+not done
+filter by function task.file.frontmatter.type !== "moc" 
+
+```
+
+## Recent Notes
+```dataviewjs
+customJS.AwardedTables.recentNotes(dv);
+```
+
+## Recent Meetings
+```dataviewjs
+customJS.AwardedTables.recentMeetings(dv);
+```
 
 [[🗣️ Meetings MOC]]
-
----
-Recently Changed
-```dataviewjs
-customJS.AwardedTables.recentNotes(dv);
-```
-
-```dataviewjs
-//customJS.MacroGuide.helloWorld(dv);
-customJS.AwardedTables.recentNotes(dv);
-```
