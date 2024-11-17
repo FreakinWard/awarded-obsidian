@@ -121,7 +121,7 @@ class AwardedTemplates {
 
     const existingFile = await tp.file.find_tfile(targetFilePath);
     if (existingFile) {
-      await app.workspace.getLeaf("tab").openFile(existingFile);
+      await this.openExistingNote(existingFile);
 
       this.logMessage(`Note already exists:\n ${targetFilePath}`);
 
@@ -151,6 +151,29 @@ class AwardedTemplates {
     // await this.app.vault.delete(fileToDelete);
     // await tp.app.vault.delete(fileToDelete);
     await app.vault.delete(fileToDelete, true);
+  }
+
+  async openExistingNote(noteFile) {
+    const { obsidian, app } = this.obsidianState();
+
+    if (noteFile) {
+      // Check if the file is already open in any workspace leaf
+      const leaves = app.workspace.getLeavesOfType("markdown");
+      let foundLeaf = null;
+
+      for (let leaf of leaves) {
+        if (leaf.view.file && leaf.view.file.path === noteFile.path) {
+          foundLeaf = leaf;
+          break;
+        }
+      }
+
+      if (foundLeaf) {
+        app.workspace.revealLeaf(foundLeaf);
+      } else {
+        await app.workspace.getLeaf("tab").openFile(noteFile);
+      }
+    }
   }
 
   getNoteTypePrompt(noteType) {
