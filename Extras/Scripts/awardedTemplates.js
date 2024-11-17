@@ -1,6 +1,7 @@
 class AwardedTemplates {
   obsidianState() {
     const { obsidian, app } = self.customJS || {};
+    if (obsidian == null || app == null) throw new Error("customJS is null.");
 
     return self.customJS;
   }
@@ -18,17 +19,16 @@ class AwardedTemplates {
 
     // for new files, create a title
     // for existing files, use existing title
-    const title = await this.createNoteTitle(tp, noteType);
-
-    this.logMessage("adjustNote", { title });
+    const newNoteTitle = await this.createNoteTitle(tp, noteType);
 
     const directory = this.getNoteTypeDirectory(noteType);
 
-    await this.renameFileAppendDate(tp, title, directory);
+    await this.renameFileAppendDate(tp, newNoteTitle, directory);
 
+    this.logMessage("adjustNote", "Done!");
     await tp.file.cursor(0);
 
-    return title;
+    return newNoteTitle;
   }
 
   async createNoteTitle(tp, noteType) {
@@ -113,72 +113,48 @@ class AwardedTemplates {
     }
   }
 
-  async renameFileAppendDate(tp, title, directory) {
+  async renameFileAppendDate(tp, newNoteTitle, directory) {
     const { obsidian, app } = this.obsidianState();
 
-    // const title = tp.file.title;
-    // const file = tp.file.find_tfile(tp.file.path(true));
-
-    const isFileAlreadyPrefixed = title.match(/^\d{4}-\d{2}-\d{2}/);
     const today = tp.date.now("YYYY-MM-DD");
-    const newTitle = title.replace(/^\d{4}-\d{2}-\d{2} /, `${today} `);
+    const newTitle = newNoteTitle.replace(/^\d{4}-\d{2}-\d{2} /, `${today} `);
 
-    const finalTitle = isFileAlreadyPrefixed ? title : newTitle;
+    const isFileAlreadyPrefixed = newNoteTitle.match(/^\d{4}-\d{2}-\d{2}/);
+    const finalTitle = isFileAlreadyPrefixed ? newNoteTitle : newTitle;
 
     const targetFilePath = `${directory}${finalTitle}`;
 
     const existingFile = await tp.file.find_tfile(targetFilePath);
-    // const fileExists = await tp.file.exists(fullPath);
     if (existingFile) {
-      // await this.deleteThisFile(tp);
+      await this.deleteThisFile(tp);
+      this.logMessage(`Note already exists:\n ${targetFilePath}`);
 
-      // const pathTFile = app.vault.getAbstractFileByPath(targetFilePath);
-      // app.workspace.getLeaf("tab").openFile(pathTFile);
-
-      this.logMessage(
-        "renameFileAppendDate",
-        `Note already exists:\n ${targetFilePath}`,
-      );
-
-      // throw new Error();
       return; // Skip the move
     }
 
-    this.logMessage(
-      "renameFileAppendDate",
-      `Note moved to:\n ${targetFilePath}`,
-    );
     await tp.file.move(targetFilePath);
-    // await tp.file.rename(targetFilePath);
+    this.logMessage(`Note moved to:\n ${targetFilePath}`);
   }
 
   async deleteThisFile(tp) {
+    const { obsidian, app } = this.obsidianState();
+
     const filePath = tp.file.path(true);
 
     const fileToDelete = tp.app.vault.getAbstractFileByPath(filePath);
 
-    if (fileToDelete) {
-      // TODO: figure out why this throws an error in the console
-      // when calling this.app then the file is deleted but an error is thrown
-      // when calling tp.app then the file is NOT deleted and no error is thrown
-      // await this.app.vault.delete(fileToDelete);
-      // await tp.app.vault.delete(fileToDelete);
-
-      try {
-        await app.vault.trash(fileToDelete, true);
-        this.logMessage(
-          "deleteThisFile",
-          `Deleted existing file at:\n ${filePath}`,
-        );
-      } catch (e) {
-        this.errorMessage(
-          "deleteThisFile",
-          `Failed to delete existing file at:\n ${filePath}`,
-        );
-      }
-    } else {
+    if (!fileToDelete) {
       console.error(`File to delete not found: ${filePath}`);
+      return;
     }
+
+    // TODO: figure out why this throws an error in the console
+    // TODO: Also, delete has now stopped working 🤦
+    // when calling this.app then the file is deleted but an error is thrown
+    // when calling tp.app then the file is NOT deleted and no error is thrown
+    // await this.app.vault.delete(fileToDelete);
+    // await tp.app.vault.delete(fileToDelete);
+    await app.vault.delete(fileToDelete, true);
   }
 
   getNoteTypePrompt(noteType) {
@@ -193,17 +169,10 @@ class AwardedTemplates {
     }
   }
 
-  logMessage(topic, message, ...rest) {
+  logMessage(...rest) {
     const { obsidian, app } = this.obsidianState();
 
     // TODO: toggle on/off for debugging purposes
-    console.log(topic, message, ...rest);
-  }
-
-  errorMessage(topic, message, ...rest) {
-    const { obsidian, app } = this.obsidianState();
-
-    // TODO: toggle on/off for debugging purposes
-    console.log(topic, message, ...rest);
+    console.log(...rest);
   }
 }
