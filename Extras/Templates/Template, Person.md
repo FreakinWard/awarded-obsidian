@@ -2,14 +2,16 @@
 type: <% "person" %>
 aliases: 
 date: <% tp.file.creation_date("YYYY-MM-DDTHH:mm:ss") %>
-birthday: 
-personality: 
 relationship:
   - co-worker
-location: 
+location: NJ
+timeZone: 
 company: Conductiv
 role: 
-pets: 
+team: 
+birthday:
+personality:
+pets:
 family:
 ---
 <%* const title = customJS.AwardedTemplates.adjustNote(tp, "person") %>
