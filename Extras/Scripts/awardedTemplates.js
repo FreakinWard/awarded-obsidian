@@ -114,7 +114,7 @@ class AwardedTemplates {
     const isFileAlreadyPrefixed = newNoteTitle.match(/^\d{4}-\d{2}-\d{2}/);
     const finalTitle = isFileAlreadyPrefixed ? newNoteTitle : newTitle;
 
-    const targetFilePath = `${directory}${finalTitle}.md`;
+    const targetFilePath = `${directory}${finalTitle}`;
 
     const existingFile = await tp.file.find_tfile(targetFilePath);
     if (existingFile) {
