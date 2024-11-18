@@ -61,29 +61,27 @@ class AwardedTemplates {
     if (title.startsWith(newNoteTitle)) {
       const promptMessage = this.getNoteTypePrompt(noteType);
 
-      // const topic = await tp.system.prompt(promptMessage);
-      // const topic = tp.system.suggester(
-      //   ["Happy", "Sad", "Confused"],
-      //   ["Happy", "Sad", "Confused"],
-      // );
-      const personFiles = await app.vault.getMarkdownFiles().filter((file) => {
-        const frontmatter = app.metadataCache.getFileCache(file)?.frontmatter;
-        return frontmatter && frontmatter.type === "person";
-      });
+      let topic;
 
-      const personNames = personFiles.map((file) => file.basename);
-      this.logMessage("promptForTopic", { personNames });
-      // const topic = await tp.system.suggester(personNames, personNames);
+      if (noteType === "person-note") {
+        const personFiles = await app.vault.getMarkdownFiles().filter((file) => {
+          const frontmatter = app.metadataCache.getFileCache(file)?.frontmatter;
+          return frontmatter && frontmatter.type === "person";
+        });
+        const personNames = personFiles.map((file) => file.basename);
 
-      const throwOnCancel = false;
-      const limit = 10;
-      const topic = await tp.system.suggester(
-        personNames,
-        personNames,
-        throwOnCancel,
-        promptMessage,
-        limit,
-      );
+        const throwOnCancel = false;
+        const limit = 10;
+        topic = await tp.system.suggester(
+          personNames,
+          personNames,
+          throwOnCancel,
+          promptMessage,
+          limit,
+        );
+      } else {
+        topic = await tp.system.prompt(promptMessage);
+      }
 
       this.logMessage("promptForTopic", { topic });
 
