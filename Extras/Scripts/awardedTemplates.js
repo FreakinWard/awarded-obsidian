@@ -61,27 +61,10 @@ class AwardedTemplates {
     if (title.startsWith(newNoteTitle)) {
       const promptMessage = this.getNoteTypePrompt(noteType);
 
-      let topic;
-
-      if (noteType === "person-note") {
-        const personFiles = await app.vault.getMarkdownFiles().filter((file) => {
-          const frontmatter = app.metadataCache.getFileCache(file)?.frontmatter;
-          return frontmatter && frontmatter.type === "person";
-        });
-        const personNames = personFiles.map((file) => file.basename);
-
-        const throwOnCancel = false;
-        const limit = 10;
-        topic = await tp.system.suggester(
-          personNames,
-          personNames,
-          throwOnCancel,
-          promptMessage,
-          limit,
-        );
-      } else {
-        topic = await tp.system.prompt(promptMessage);
-      }
+      const topic =
+        noteType === "person-note"
+          ? await this.promptSuggestionUser(tp, promptMessage)
+          : await tp.system.prompt(promptMessage);
 
       this.logMessage("promptForTopic", { topic });
 
@@ -89,6 +72,22 @@ class AwardedTemplates {
     }
 
     return title;
+  }
+
+  async promptSuggestionUser(tp, promptMessage) {
+    const { obsidian, app } = this.obsidianState();
+
+    const personFiles = await app.vault.getMarkdownFiles().filter((file) => {
+      const frontmatter = app.metadataCache.getFileCache(file)?.frontmatter;
+      return frontmatter && frontmatter.type === "person";
+    });
+
+    const personNames = personFiles.map((file) => file.basename);
+
+    const throwOnCancel = false;
+    const limit = 10;
+
+    return await tp.system.suggester(personNames, personNames, throwOnCancel, promptMessage, limit);
   }
 
   getNoteTypeDirectory(noteType) {
