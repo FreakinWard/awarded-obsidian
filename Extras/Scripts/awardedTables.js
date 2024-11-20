@@ -182,4 +182,34 @@ class AwardedTables {
         .file.tasks.where((task) => !task.completed),
     );
   }
+
+  teamStructure(dv) {
+    const grouped = dv
+      .pages()
+      .where((p) => p.type === "person" && p.company === "Conductiv")
+      .groupBy((p) => p.team);
+
+    console.log({ grouped });
+
+    for (const group of grouped) {
+      dv.header(2, group.key); // Team Name
+
+      console.log(group);
+
+      const sortedMembers = group.rows.sort((a, b) => {
+        // Prioritize "Team Lead" role first
+        if (a.role === "Team Lead") return -1;
+        if (b.role === "Team Lead") return 1;
+        return a.file.name.localeCompare(b.file.name);
+      });
+
+      // Display all members, with Team Lead on top
+      dv.table(
+        ["Name", "Role"],
+        sortedMembers.map((person) => {
+          return [person.file.name, person.role];
+        }),
+      );
+    }
+  }
 }

@@ -6,6 +6,7 @@ relationship:
   - co-worker
 location: NJ
 timeZone: 
+tenuredDate: 
 company: Conductiv
 role: 
 team: 
