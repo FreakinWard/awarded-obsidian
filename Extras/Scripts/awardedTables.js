@@ -94,6 +94,22 @@ class AwardedTables {
     );
   }
 
+  personMentions(dv) {
+    const { obsidian, app } = self.customJS || {};
+    if (obsidian == null || app == null) throw new Error("customJS is null.");
+
+    const currentFilePath = dv.current().file.link.path;
+
+    dv.table(
+      ["File", "Summary", ""],
+      dv
+        .pages(`[[${currentFilePath}]]`)
+        .where((page) => page.type !== "person" && page.type !== "person-note")
+        .sort((page) => page.file.mtime.toMillis(), "desc")
+        .map((page) => this.createCardRowWithSummary(page)),
+    );
+  }
+
   person1on1(dv) {
     const { obsidian, app } = self.customJS || {};
     if (obsidian == null || app == null) throw new Error("customJS is null.");
