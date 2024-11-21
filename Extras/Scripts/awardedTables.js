@@ -74,6 +74,7 @@ class AwardedTables {
         .pages()
         .where((p) => p.file.folder === "Inbox")
         .limit(10)
+        .sort((page) => page.file.mtime.toMillis(), "desc")
         .map((page) => [this.createCardRow(page)]),
     );
   }
