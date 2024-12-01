@@ -36,8 +36,27 @@ class AwardedTemplates {
     // When Person -> {topic}
     // When TimeStamped -> {YYYY-MM-DD} {topic}
     const today = tp.date.now("YYYY-MM-DD");
+    
+    const currentDayNumber = tp.date.now("d");
+    const isTomorrowWeekend = currentDayNumber >= 5;
+
+    const daysUntilMonday = currentDayNumber === 1 ? 0 : (7 - currentDayNumber) + 1;
+
+    const firstOfTheWeek = tp.date.now("YYYY-MM-DD", daysUntilMonday);
+
+    const nextWorkingDay = isTomorrowWeekend ? firstOfTheWeek : tp.date.now("YYYY-MM-DD", 1);
+
+    this.logMessage("createNoteTitle", {
+      today,
+      currentDayNumber,
+      isTomorrowWeekend,
+      firstOfTheWeek,
+      nextWorkingDay,
+      noteType,
+    });
 
     if (noteType === "standup") return `${today} ${noteType}`;
+    if (noteType === "standup-next") return `${nextWorkingDay} ${noteType}`;
 
     const topic = await this.promptForTopic(tp, noteType);
 

@@ -1,8 +1,6 @@
 ---
-
 kanban-plugin: board
 type: moc
-
 ---
 
 ## Recent

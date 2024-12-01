@@ -62,6 +62,7 @@ In general, templates share this common behavior:
 
 See list of available templates
 - [Template, 1-on-1](Extras/Templates/Template%2C%201-on-1.md)
+- [Template, Journal Daily](Extras/Templates/Template,%20Journal%20Daily.md)
 - [Template, Meeting Note](Extras/Templates/Template%2C%20Meeting%20Note.md)
 - [Template, Person](Extras/Templates/Template%2C%20Person.md)
 - [Template, Standup](Extras/Templates/Template%2C%20Standup.md)
@@ -79,6 +80,9 @@ See list of available templates
 4. [Kanban](https://obsidian.md/plugins?id=obsidian-kanban)
 5. [Supercharged Links](https://obsidian.md/plugins?id=supercharged-links-obsidian)
 6. [Style Settings](https://obsidian.md/plugins?id=obsidian-style-settings)
+7. [Journals](https://obsidian.md/plugins?id=journals)
+8. [Callout Manager](https://obsidian.md/plugins?id=callout-manager)
+
 
 ## Inspiration
 
