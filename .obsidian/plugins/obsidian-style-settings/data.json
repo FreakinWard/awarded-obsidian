@@ -1,0 +1,17 @@
+{
+  "minimal-style@@h1-size": "1.75em",
+  "minimal-style@@h2-size": "1.5em",
+  "minimal-style@@h3-size": "1.25em",
+  "minimal-style@@h4-size": "1em",
+  "supercharged-links@@3591-35b0-before": "🤝 ",
+  "supercharged-links@@b9b5-460e-before": "🧑 ",
+  "supercharged-links@@1fe1-3669-before": "⚡ ",
+  "supercharged-links@@8a04-cd5b-before": "✨ ",
+  "supercharged-links@@a98f-3eaa-before": "🧩 ",
+  "supercharged-links@@2807-a4cf-before": "🎯 ",
+  "supercharged-links@@239e-ab29-before": "💭 ",
+  "supercharged-links@@08d3-f485-before": "🌐 ",
+  "supercharged-links@@a3db-16f2-before": "🔍 ",
+  "minimal-style@@minimal-strike-lists": true,
+  "supercharged-links@@0af4-b99f-before": "📋 "
+}

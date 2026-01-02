@@ -1,0 +1,18 @@
+li.task-list-item[data-task="."] {
+  position: relative;
+  padding-left: 3px; /* Adjust this value as needed */
+}
+
+li.task-list-item[data-task="."] .task-list-item-checkbox::after {
+  content: ''; /* Necessary for generating a pseudo-element */
+  display: block; /* Turns the pseudo-element into a block for easier size and position control */
+  width: 20px; /* Width of the checkbox, can adjust if necessary */
+  height: 20px; /* Height of the checkbox, can adjust if necessary */
+  position: absolute; /* Allows precise positioning */
+  left: 50%; /* Moves the center of the icon to align with the text */
+  top: 50%; /* Center vertically relative to the list item */
+  transform: translate(-50%, -50%); /* Perfectly centers the checkbox both horizontally and vertically */
+  -webkit-mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWRvdCI+PGNpcmNsZSBjeD0iMTIuMSIgY3k9IjEyLjEiIHI9IjEiLz48L3N2Zz4='); /* SVG icon */
+  -webkit-mask-size: cover; /* Adjust if the icon needs to fill the space more or less */
+  background-color: #yourBulletColor; /* Directly set the background color */
+}

@@ -1,0 +1,8 @@
+{
+  "cssTheme": "Minimal",
+  "enabledCssSnippets": [
+    "Task-to-bullet"
+  ],
+  "theme": "obsidian",
+  "translucency": false
+}

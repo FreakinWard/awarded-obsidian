@@ -1,0 +1,58 @@
+{
+  "callouts": {
+    "custom": [
+      "journal",
+      "calendar",
+      "picture",
+      "task",
+      "highlight"
+    ],
+    "settings": {
+      "journal": [
+        {
+          "changes": {
+            "icon": "lucide-history",
+            "color": "166, 189, 197"
+          }
+        }
+      ],
+      "calendar": [
+        {
+          "changes": {
+            "icon": "lucide-pen-box",
+            "color": "166, 189, 197"
+          }
+        }
+      ],
+      "picture": [
+        {
+          "changes": {
+            "icon": "lucide-image",
+            "color": "166, 189, 197"
+          }
+        }
+      ],
+      "task": [
+        {
+          "changes": {
+            "icon": "lucide-check-square",
+            "color": "166, 189, 197"
+          }
+        }
+      ],
+      "highlight": [
+        {
+          "changes": {
+            "icon": "star-list",
+            "color": "166, 189, 197"
+          }
+        }
+      ]
+    }
+  },
+  "calloutDetection": {
+    "obsidian": true,
+    "theme": true,
+    "snippet": true
+  }
+}

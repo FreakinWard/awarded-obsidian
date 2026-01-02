@@ -1,0 +1,21 @@
+filters:
+  and:
+    - file.tags.containsAny("type/area")
+    - file.folder != "Extras/Templates"
+properties:
+  note.summary:
+    displayName: Summary
+views:
+  - type: table
+    name: All Areas
+    filters:
+      and:
+        - file.tags.contains("status/active")
+    order:
+      - file.name
+      - summary
+  - type: table
+    name: Inactive Areas
+    filters:
+      and:
+        - '!file.tags.contains("status/active")'

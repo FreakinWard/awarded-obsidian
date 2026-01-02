@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "apiKey": "4cbb4b13-6362-474f-8ff7-5fdf05db7c86",
+  "apiUrl": "https://wakapi.dev",
+  "defaultProject": "centene-docs",
+  "ignoreList": [],
+  "projectAssociations": [],
+  "debugModeEnabled": true
+}

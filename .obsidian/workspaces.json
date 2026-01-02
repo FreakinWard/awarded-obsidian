@@ -1,0 +1,734 @@
+{
+  "workspaces": {
+    "Articles Workspace": {
+      "main": {
+        "id": "1dde7f46f0afd597",
+        "type": "split",
+        "children": [
+          {
+            "id": "decc3e8a25841e34",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "30cfa94a9c9c30e6",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Notes/Obsidian Articles.md",
+                    "mode": "preview",
+                    "source": true
+                  }
+                }
+              },
+              {
+                "id": "30b0189bb4448a83",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Notes/Article - Using workspaces and pinning in Obsidian.md",
+                    "mode": "preview",
+                    "source": true
+                  }
+                }
+              }
+            ],
+            "currentTab": 1
+          }
+        ],
+        "direction": "vertical"
+      },
+      "left": {
+        "id": "8c85dde087cb31cf",
+        "type": "split",
+        "children": [
+          {
+            "id": "3f199fef245214a1",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "2911264052344de2",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "205d9088bc6c355e",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "c8e0d286b475ba75",
+                "type": "leaf",
+                "state": {
+                  "type": "bookmarks",
+                  "state": {}
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 200
+      },
+      "right": {
+        "id": "3d614cee6e24f24e",
+        "type": "split",
+        "children": [
+          {
+            "id": "2ee85304630efc16",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "6d07604d96261d33",
+                "type": "leaf",
+                "state": {
+                  "type": "journal-calendar",
+                  "state": {}
+                }
+              },
+              {
+                "id": "bb89b36d412f656f",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "file": "Notes/Article - Using workspaces and pinning in Obsidian.md",
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              },
+              {
+                "id": "b4ea5c74e896da14",
+                "type": "leaf",
+                "state": {
+                  "type": "outgoing-link",
+                  "state": {
+                    "file": "Notes/Article - Using workspaces and pinning in Obsidian.md",
+                    "linksCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              },
+              {
+                "id": "d297407e7761bf0f",
+                "type": "leaf",
+                "state": {
+                  "type": "tag",
+                  "state": {
+                    "sortOrder": "frequency",
+                    "useHierarchy": true
+                  }
+                }
+              },
+              {
+                "id": "3f81d2efe3ce51ae",
+                "type": "leaf",
+                "state": {
+                  "type": "outline",
+                  "state": {
+                    "file": "Notes/Article - Using workspaces and pinning in Obsidian.md"
+                  }
+                }
+              }
+            ],
+            "currentTab": 4
+          }
+        ],
+        "direction": "horizontal",
+        "width": 387.5
+      },
+      "left-ribbon": {
+        "hiddenItems": {
+          "switcher:Open quick switcher": false,
+          "graph:Open graph view": false,
+          "canvas:Create new canvas": false,
+          "command-palette:Open command palette": false,
+          "templater-obsidian:Templater": false,
+          "callout-manager:Insert Callout": false,
+          "obsidian-excalidraw-plugin:Create new drawing": false,
+          "workspaces:Manage workspace layouts": false
+        }
+      },
+      "active": "30b0189bb4448a83",
+      "mtime": "2024-10-01T21:12:09+02:00",
+      "workspaces-plus:settings-v1": {}
+    },
+    "Work Workspace": {
+      "main": {
+        "id": "1dde7f46f0afd597",
+        "type": "split",
+        "children": [
+          {
+            "id": "af80e5d9c9235c7c",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "256cebed9025afb7",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Notes/Project MOC.md",
+                    "mode": "preview",
+                    "source": true
+                  }
+                }
+              },
+              {
+                "id": "75f8391d9807593f",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Notes/Task MOC.md",
+                    "mode": "source",
+                    "source": true
+                  }
+                }
+              },
+              {
+                "id": "a7631572643d0f14",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Notes/Meeting MOC.md",
+                    "mode": "preview",
+                    "source": true
+                  }
+                }
+              }
+            ],
+            "currentTab": 2
+          }
+        ],
+        "direction": "vertical"
+      },
+      "left": {
+        "id": "8c85dde087cb31cf",
+        "type": "split",
+        "children": [
+          {
+            "id": "3f199fef245214a1",
+            "type": "tabs",
+            "dimension": 50.43394406943106,
+            "children": [
+              {
+                "id": "2911264052344de2",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "205d9088bc6c355e",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "c8e0d286b475ba75",
+                "type": "leaf",
+                "state": {
+                  "type": "bookmarks",
+                  "state": {}
+                }
+              }
+            ]
+          },
+          {
+            "id": "61dbd18f6396085e",
+            "type": "tabs",
+            "dimension": 49.56605593056894,
+            "children": [
+              {
+                "id": "e4e8720fc6393c8e",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Notes/HOME.md",
+                    "mode": "preview",
+                    "source": true
+                  },
+                  "pinned": true
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 457.5
+      },
+      "right": {
+        "id": "3d614cee6e24f24e",
+        "type": "split",
+        "children": [
+          {
+            "id": "2ee85304630efc16",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "6d07604d96261d33",
+                "type": "leaf",
+                "state": {
+                  "type": "journal-calendar",
+                  "state": {}
+                }
+              },
+              {
+                "id": "bb89b36d412f656f",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "file": "Notes/Project MOC.md",
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              },
+              {
+                "id": "b4ea5c74e896da14",
+                "type": "leaf",
+                "state": {
+                  "type": "outgoing-link",
+                  "state": {
+                    "file": "Notes/Project MOC.md",
+                    "linksCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              },
+              {
+                "id": "d297407e7761bf0f",
+                "type": "leaf",
+                "state": {
+                  "type": "tag",
+                  "state": {
+                    "sortOrder": "frequency",
+                    "useHierarchy": true
+                  }
+                }
+              },
+              {
+                "id": "3f81d2efe3ce51ae",
+                "type": "leaf",
+                "state": {
+                  "type": "outline",
+                  "state": {
+                    "file": "Notes/Project MOC.md"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "371dfd5a40e16dff",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "13d26e97c00536ae",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Notes/Last Modified.md",
+                    "mode": "preview",
+                    "source": true
+                  },
+                  "pinned": true
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 387.5
+      },
+      "left-ribbon": {
+        "hiddenItems": {
+          "switcher:Open quick switcher": false,
+          "graph:Open graph view": false,
+          "canvas:Create new canvas": false,
+          "command-palette:Open command palette": false,
+          "templater-obsidian:Templater": false,
+          "callout-manager:Insert Callout": false,
+          "obsidian-excalidraw-plugin:Create new drawing": false,
+          "workspaces:Manage workspace layouts": false
+        }
+      },
+      "active": "6d07604d96261d33",
+      "mtime": "2024-10-01T21:11:31+02:00",
+      "workspaces-plus:settings-v1": {}
+    },
+    "Home Workspace": {
+      "main": {
+        "id": "1dde7f46f0afd597",
+        "type": "split",
+        "children": [
+          {
+            "id": "c889fb61a6ae3bfb",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "ff1d1141c3fa06ce",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Journal/01 Daily/2025/12/2025-12-04.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "pinned": true,
+                  "icon": "lucide-file",
+                  "title": "2025-12-04"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical"
+      },
+      "left": {
+        "id": "8c85dde087cb31cf",
+        "type": "split",
+        "children": [
+          {
+            "id": "3f199fef245214a1",
+            "type": "tabs",
+            "dimension": 66.90647482014388,
+            "children": [
+              {
+                "id": "2911264052344de2",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {
+                    "sortOrder": "alphabetical",
+                    "autoReveal": false
+                  },
+                  "icon": "lucide-folder-closed",
+                  "title": "Files"
+                }
+              },
+              {
+                "id": "205d9088bc6c355e",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  },
+                  "icon": "lucide-search",
+                  "title": "Search"
+                }
+              },
+              {
+                "id": "c8e0d286b475ba75",
+                "type": "leaf",
+                "state": {
+                  "type": "bookmarks",
+                  "state": {},
+                  "icon": "lucide-bookmark",
+                  "title": "Bookmarks"
+                }
+              }
+            ],
+            "currentTab": 1
+          },
+          {
+            "id": "61dbd18f6396085e",
+            "type": "tabs",
+            "dimension": 33.093525179856115,
+            "children": [
+              {
+                "id": "e4e8720fc6393c8e",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Notes/HOME.md",
+                    "mode": "preview",
+                    "source": true
+                  },
+                  "pinned": true,
+                  "icon": "lucide-file",
+                  "title": "HOME"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 259.5,
+        "collapsed": true
+      },
+      "right": {
+        "id": "3d614cee6e24f24e",
+        "type": "split",
+        "children": [
+          {
+            "id": "2ee85304630efc16",
+            "type": "tabs",
+            "dimension": 23.896103896103895,
+            "children": [
+              {
+                "id": "6d07604d96261d33",
+                "type": "leaf",
+                "state": {
+                  "type": "journal-calendar",
+                  "state": {},
+                  "icon": "calendar-days",
+                  "title": "Calendar"
+                }
+              },
+              {
+                "id": "bb89b36d412f656f",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "file": "Notes/Action Items.md",
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": true
+                  },
+                  "icon": "links-coming-in",
+                  "title": "Backlinks for Action Items"
+                }
+              },
+              {
+                "id": "b4ea5c74e896da14",
+                "type": "leaf",
+                "state": {
+                  "type": "outgoing-link",
+                  "state": {
+                    "file": "Notes/Action Items.md",
+                    "linksCollapsed": false,
+                    "unlinkedCollapsed": true
+                  },
+                  "icon": "links-going-out",
+                  "title": "Outgoing links from Action Items"
+                }
+              },
+              {
+                "id": "d297407e7761bf0f",
+                "type": "leaf",
+                "state": {
+                  "type": "tag",
+                  "state": {
+                    "sortOrder": "frequency",
+                    "useHierarchy": true,
+                    "showSearch": false,
+                    "searchQuery": ""
+                  },
+                  "icon": "lucide-tags",
+                  "title": "Tags"
+                }
+              },
+              {
+                "id": "3f81d2efe3ce51ae",
+                "type": "leaf",
+                "state": {
+                  "type": "outline",
+                  "state": {
+                    "file": "Notes/Action Items.md",
+                    "followCursor": false,
+                    "showSearch": false,
+                    "searchQuery": ""
+                  },
+                  "icon": "lucide-list",
+                  "title": "Outline of Action Items"
+                }
+              }
+            ]
+          },
+          {
+            "id": "e5870e0f48407999",
+            "type": "tabs",
+            "dimension": 17.316017316017316,
+            "children": [
+              {
+                "id": "b77e0edf4b813d7e",
+                "type": "leaf",
+                "state": {
+                  "type": "localgraph",
+                  "state": {
+                    "file": "Journal/01 Daily/2025/12/2025-12-04.md",
+                    "options": {
+                      "collapse-filter": true,
+                      "search": "-tag:#type/person",
+                      "localJumps": 1,
+                      "localBacklinks": true,
+                      "localForelinks": true,
+                      "localInterlinks": false,
+                      "showTags": false,
+                      "showAttachments": false,
+                      "hideUnresolved": true,
+                      "collapse-color-groups": true,
+                      "colorGroups": [
+                        {
+                          "query": "tag: #type/meeting OR tag: #type/standup",
+                          "color": {
+                            "a": 1,
+                            "rgb": 3900150
+                          }
+                        },
+                        {
+                          "query": "tag: #type/1-on-1 ",
+                          "color": {
+                            "a": 1,
+                            "rgb": 11032055
+                          }
+                        },
+                        {
+                          "query": "tag: #type/project",
+                          "color": {
+                            "a": 1,
+                            "rgb": 2278750
+                          }
+                        },
+                        {
+                          "query": "tag: #type/area",
+                          "color": {
+                            "a": 1,
+                            "rgb": 16007006
+                          }
+                        }
+                      ],
+                      "collapse-display": true,
+                      "showArrow": false,
+                      "textFadeMultiplier": 0,
+                      "nodeSizeMultiplier": 0.997983583154889,
+                      "lineSizeMultiplier": 2.25358672376874,
+                      "collapse-forces": true,
+                      "centerStrength": 0,
+                      "repelStrength": 0,
+                      "linkStrength": 0.990185581727338,
+                      "linkDistance": 104,
+                      "scale": 0.29154607531486076,
+                      "close": true
+                    }
+                  },
+                  "icon": "lucide-git-fork",
+                  "title": "Graph of 2025-12-04"
+                }
+              }
+            ]
+          },
+          {
+            "id": "371dfd5a40e16dff",
+            "type": "tabs",
+            "dimension": 58.78787878787879,
+            "children": [
+              {
+                "id": "e1a7db2614b4c392",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "Notes/Focus Dashboard.md",
+                    "mode": "source",
+                    "source": false
+                  },
+                  "pinned": true,
+                  "icon": "lucide-file",
+                  "title": "Focus Dashboard"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 407.5
+      },
+      "left-ribbon": {
+        "hiddenItems": {
+          "smart-second-brain:Open S2B Chat": false,
+          "daily-notes:Open today's daily note": true,
+          "templates:Insert template": true,
+          "bases:Create new base": true,
+          "peerdraft:Show my Peerdraft Shares": true,
+          "switcher:Open quick switcher": true,
+          "canvas:Create new canvas": false,
+          "graph:Open graph view": false,
+          "command-palette:Open command palette": true,
+          "templater-obsidian:Templater": true,
+          "callout-manager:Insert Callout": false,
+          "obsidian-excalidraw-plugin:Create new drawing": false,
+          "workspaces:Manage workspace layouts": true,
+          "workspaces-plus:Manage workspaces": false
+        }
+      },
+      "active": "ff1d1141c3fa06ce",
+      "mtime": "2025-12-04T16:18:31-05:00",
+      "workspaces-plus:settings-v1": {
+        "explorerFoldState": [
+          "Extras",
+          "Extras/Templates",
+          "Journal/01 Daily",
+          "Journal/02 Weekly",
+          "Journal/03 Monthly",
+          "Journal/04 Quarterly",
+          "Journal/05 Yearly"
+        ]
+      }
+    }
+  },
+  "active": "Home Workspace"
+}

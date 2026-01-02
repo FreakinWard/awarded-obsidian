@@ -1,0 +1,13 @@
+{
+  "livePreview": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "Notes",
+  "attachmentFolderPath": "Attachments",
+  "defaultViewMode": "source",
+  "userIgnoreFilters": [
+    "Templates/"
+  ],
+  "alwaysUpdateLinks": true,
+  "spellcheck": true,
+  "promptDelete": false
+}

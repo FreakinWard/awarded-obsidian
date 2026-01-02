@@ -1,0 +1,97 @@
+filters:
+  and:
+    - file.tags.containsAny("type/meeting", "type/standup", "type/refinement", "type/pairing", "type/retro", "type/1-on-1")
+    - file.folder != "Extras/Templates"
+properties:
+  file.name:
+    displayName: Name
+  note.participants:
+    displayName: Participants
+  note.summary:
+    displayName: Summary
+views:
+  - type: table
+    name: All Meetings
+    order:
+      - created
+      - file.name
+      - tags
+      - summary
+      - participants
+    sort:
+      - property: created
+        direction: DESC
+    columnSize:
+      file.name: 209
+      note.tags: 238
+      note.summary: 324
+      note.participants: 361
+  - type: table
+    name: Standups
+    filters:
+      and:
+        - file.tags.containsAny("type/standup")
+    order:
+      - created
+      - file.name
+      - summary
+      - participants
+    sort:
+      - property: created
+        direction: DESC
+  - type: table
+    name: Archers Ceremonies
+    filters:
+      and:
+        - file.tags.containsAny("type/standup", "type/refinement", "type/retro")
+    order:
+      - created
+      - file.name
+      - summary
+      - participants
+    sort:
+      - property: created
+        direction: DESC
+  - type: table
+    name: Pairing
+    filters:
+      and:
+        - file.tags.containsAny("type/pairing")
+    order:
+      - created
+      - file.name
+      - summary
+      - participants
+    sort:
+      - property: created
+        direction: DESC
+    columnSize:
+      file.name: 277
+      note.participants: 262
+      note.summary: 324
+  - type: table
+    name: Retro
+    filters:
+      and:
+        - file.tags.contains("type/retro")
+    order:
+      - created
+      - file.name
+      - summary
+      - participants
+    sort:
+      - property: created
+        direction: DESC
+  - type: table
+    name: 1-on-1
+    filters:
+      and:
+        - file.tags.contains("type/1-on-1")
+    order:
+      - created
+      - file.name
+      - participants
+      - summary
+    sort:
+      - property: created
+        direction: DESC

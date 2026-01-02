@@ -1,0 +1,22 @@
+filters:
+  and:
+    - file.tags.containsAny("type/project")
+    - file.folder != "Extras/Templates"
+properties:
+  note.summary:
+    displayName: Summary
+views:
+  - type: table
+    name: Active Projects
+    filters:
+      and:
+        - '!file.tags.contains("status/done")'
+    order:
+      - file.name
+      - summary
+      - tags
+  - type: table
+    name: Inactive Projects
+    filters:
+      and:
+        - '!file.tags.contains("status/active")'

@@ -1,0 +1,30 @@
+properties:
+  file.name:
+    displayName: Name
+  note.role:
+    displayName: Role
+  note.hobbies:
+    displayName: Hobbies
+  note.location:
+    displayName: Location
+  note.team-name:
+    displayName: Team
+views:
+  - type: table
+    name: All People
+    filters:
+      and:
+        - file.tags.containsAny("type/person")
+    order:
+      - file.name
+      - role
+      - team-name
+      - location
+      - hobbies
+      - summary
+    columnSize:
+      file.name: 218
+      note.role: 212
+      note.team-name: 175
+      note.location: 190
+      note.hobbies: 138

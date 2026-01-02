@@ -1,0 +1,21 @@
+{
+  "livePreview": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "Notes",
+  "attachmentFolderPath": "Attachments",
+  "defaultViewMode": "source",
+  "userIgnoreFilters": [
+    "Extras/Templates",
+    "Extras/Scripts/log Templates/"
+  ],
+  "alwaysUpdateLinks": true,
+  "spellcheck": true,
+  "promptDelete": false,
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}
